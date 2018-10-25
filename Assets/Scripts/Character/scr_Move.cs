@@ -5,11 +5,19 @@ using UnityEngine;
 
 public class scr_Move : MonoBehaviour
 {
-	public GameObject touchEffect;
 
-	Touch touch;
 	Ray ray;
 	RaycastHit hit;
+	Rigidbody rb;
+	public float speed = 5;
+	Vector3 destination;
+
+
+	private void Start()
+	{
+		rb = GetComponent<Rigidbody>();
+		destination = new Vector3(0, transform.position.y, 0);
+	}
 
 	private void Update()
 	{
@@ -19,19 +27,20 @@ public class scr_Move : MonoBehaviour
 
 	private void Move()
 	{
-		this.transform.position = Vector3.Lerp(this.transform.position, hit.point, Time.deltaTime);
+		transform.rotation = Quaternion.LookRotation(destination - transform.position, Vector3.up);
+		rb.MovePosition(Vector3.Lerp(rb.position, destination, speed * Time.deltaTime));
 	}
 
 	void GetInput()
 	{
-		if (Input.touchCount > 0)
+		if (Input.GetMouseButton(0))
 		{
-			touch = Input.GetTouch(0);
-			ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
-			if (Physics.Raycast(ray, out hit))
-			{
-				Instantiate(touchEffect, hit.point, new Quaternion(0, 0, 0, 0));
-			}
+
+			ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+			Physics.Raycast(ray, out hit);
+			if (hit.collider == null) return;
+
+			destination = new Vector3(hit.point.x, transform.position.y, hit.point.z);
 		}
 	}
 }
