@@ -56,9 +56,13 @@ public class Waypoints : MonoBehaviour {
     {
         //  Récupère la position actuelle de l'objet à bouger
         Vector3 currentPosition = this.transform.position;
+        Quaternion currentQuaternion = this.transform.rotation;
+        Vector3 currentRotation = currentQuaternion.eulerAngles;
 
         // Prend la position du waypoint suivant
         Vector3 targetPosition = currentWaypoint.transform.position;
+        Quaternion targetQuaternion = currentWaypoint.transform.rotation;
+        Vector3 targetRotation = targetQuaternion.eulerAngles;
 
 
         // Récupère la distance entre les deux waypoints
@@ -77,6 +81,8 @@ public class Waypoints : MonoBehaviour {
                 directionOfTravel.z * speed * Time.deltaTime,
                 Space.World
             );
+
+            
         }
         else
         {
@@ -101,6 +107,19 @@ public class Waypoints : MonoBehaviour {
             }
 
             NextWaypoint();
+        }
+
+        if (Quaternion.Angle(currentQuaternion, targetQuaternion) > .1f)
+        {
+            Vector3 directionToRotate = targetRotation - currentRotation;
+            directionToRotate.Normalize();
+
+            this.transform.Translate(
+                directionToRotate.x * speed * Time.deltaTime,
+                directionToRotate.y * speed * Time.deltaTime,
+                directionToRotate.z * speed * Time.deltaTime,
+                Space.World
+            );
         }
     }
 
