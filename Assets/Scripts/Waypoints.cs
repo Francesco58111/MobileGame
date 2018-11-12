@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ public class Waypoints : MonoBehaviour {
     public List<Waypoints> wayPoints;
     public float speed = 3f;
     public bool isCircular;
+    public bool movingObject;
 
     // Toujours true au début car l'objet à bouger doit toujours avancer vers le 1er wayPoint
     public bool inReverse = true;
@@ -20,15 +22,23 @@ public class Waypoints : MonoBehaviour {
 
     public float rotationSpeed = 5.0f;
 
+    public LimitBehaviour leftLimit;
+    public LimitBehaviour rightLimit;
+    public LimitBehaviour upLimit;
+    public LimitBehaviour bottomLimit;
 
 
-    void Start()
+
+    void Awake()
     {
         //Set le premier waypoint
         if (wayPoints.Count > 0)
         {
             currentWaypoint = wayPoints[0];
         }
+
+        if (movingObject)
+            this.transform.position = currentWaypoint.transform.position;
     }
 
     void Update()
@@ -38,6 +48,43 @@ public class Waypoints : MonoBehaviour {
         {
             MoveTowardsWaypoint();
 
+            DefineLimits();
+        }
+    }
+
+    public void DefineLimits()
+    {
+
+        Vector3 currentDirection = this.transform.position - currentWaypoint.transform.position;
+
+        if (currentDirection.x != 0)
+        {
+            if (currentDirection.x < 0)
+            {
+                rightLimit.canKill = true;
+                leftLimit.canKill = false;
+            }
+
+            if (currentDirection.x < 0)
+            {
+                rightLimit.canKill = false;
+                leftLimit.canKill = true;
+            }
+        }
+
+        if (currentDirection.z != 0)
+        {
+            if (currentDirection.z < 0)
+            {
+                upLimit.canKill = true;
+                bottomLimit.canKill = false;
+            }
+
+            if (currentDirection.z < 0)
+            {
+                upLimit.canKill = false;
+                bottomLimit.canKill = true;
+            }
         }
     }
 
@@ -56,13 +103,10 @@ public class Waypoints : MonoBehaviour {
     {
         //  Récupère la position actuelle de l'objet à bouger
         Vector3 currentPosition = this.transform.position;
-        Quaternion currentQuaternion = this.transform.rotation;
-        Vector3 currentRotation = currentQuaternion.eulerAngles;
+        
 
         // Prend la position du waypoint suivant
         Vector3 targetPosition = currentWaypoint.transform.position;
-        Quaternion targetQuaternion = currentWaypoint.transform.rotation;
-        Vector3 targetRotation = targetQuaternion.eulerAngles;
 
 
         // Récupère la distance entre les deux waypoints
@@ -83,6 +127,7 @@ public class Waypoints : MonoBehaviour {
             );
 
             
+
         }
         else
         {
@@ -107,19 +152,6 @@ public class Waypoints : MonoBehaviour {
             }
 
             NextWaypoint();
-        }
-
-        if (Quaternion.Angle(currentQuaternion, targetQuaternion) > .1f)
-        {
-            Vector3 directionToRotate = targetRotation - currentRotation;
-            directionToRotate.Normalize();
-
-            this.transform.Translate(
-                directionToRotate.x * speed * Time.deltaTime,
-                directionToRotate.y * speed * Time.deltaTime,
-                directionToRotate.z * speed * Time.deltaTime,
-                Space.World
-            );
         }
     }
 
