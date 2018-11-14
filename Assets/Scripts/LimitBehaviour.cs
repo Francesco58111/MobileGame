@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LimitBehaviour : MonoBehaviour
 {
-
+    [Header("Camera Box Collisions")]
     public BoxCollider boxCollider;
 
     public bool canKill;
