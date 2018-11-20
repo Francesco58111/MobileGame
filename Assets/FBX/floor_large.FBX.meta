@@ -1,15 +1,14 @@
 fileFormatVersion: 2
-guid: a7d64648b55570044a692a5e2972928e
+guid: 2d912a36c6964354983a6120175ed47d
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
     2100000: 'Material #13'
-    2100002: 'Material #14'
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Plane001
+    4300000: floor_large
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -46,10 +45,10 @@ ModelImporter:
     addColliders: 0
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 1
+    importCameras: 0
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 1
+    generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
@@ -57,9 +56,9 @@ ModelImporter:
     preserveHierarchy: 0
     indexFormat: 0
     secondaryUVAngleDistortion: 8
-    secondaryUVAreaDistortion: 15.000001
+    secondaryUVAreaDistortion: 15
     secondaryUVHardAngle: 88
-    secondaryUVPackMargin: 4
+    secondaryUVPackMargin: 64
     useFileScale: 1
     previousCalculatedGlobalScale: 1
     hasPreviousCalculatedGlobalScale: 0
