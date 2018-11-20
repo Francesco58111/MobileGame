@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof (Animator))]
 public class scr_Door : MonoBehaviour
 {
 	public Animator anim;
@@ -10,7 +9,7 @@ public class scr_Door : MonoBehaviour
 
 	private void Awake()
 	{
-		anim = GetComponent<Animator>();
+		anim = GetComponentInChildren<Animator>();
 	}
 
 	public void Activate()

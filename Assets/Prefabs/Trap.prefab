@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23314552059961234}
   - component: {fileID: 65430502465675170}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: DoorSwingRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 23043021105106674}
   - component: {fileID: 65927342993991080}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: DoorSwingLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55,10 +55,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4427301983439566}
-  - component: {fileID: 114940007536721884}
   - component: {fileID: 95196029516531532}
   m_Layer: 0
-  m_Name: Trap
+  m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,6 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4954930290254168}
+  - component: {fileID: 114813721743257410}
   m_Layer: 0
   m_Name: Trap
   m_TagString: Untagged
@@ -127,7 +127,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1993658270783054}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.9700003, y: 0, z: -7.4}
+  m_LocalPosition: {x: 7.87, y: -0.22, z: -2.63}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4427301983439566}
@@ -260,12 +260,12 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114940007536721884
+--- !u!114 &114813721743257410
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1232402009986362}
+  m_GameObject: {fileID: 1993658270783054}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c922b303f7c3b8d4f911d2bb4691506a, type: 3}

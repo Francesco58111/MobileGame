@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class scr_Move : MonoBehaviour
 {
@@ -31,13 +32,18 @@ public class scr_Move : MonoBehaviour
 	{
 		GetInput();
 		Move();
-		DetectWall();
 		ApplyGravity();
+		Checkdeath();
 	}
 
-	private void DetectWall()
+	private void Checkdeath()
 	{
+		if(transform.position.y < -5)
+		{
+			Death();
+		}
 	}
+
 
 	private void ApplyGravity()
 	{
@@ -81,6 +87,21 @@ public class scr_Move : MonoBehaviour
 			rb.AddForce(direction * acceleration);
 		}
 		transform.LookAt(new Vector3(destination.x, transform.position.y, destination.z));
+	}
+
+	public void Death()
+	{
+		//stopper la camera
+		//jouer l'anim de mort
+		//afficher la mort (et le score ?)
+		StartCoroutine(Respawn());
+	}
+
+	IEnumerator Respawn()
+	{
+		//écran de chargement
+		yield return new WaitForSeconds(1f);
+		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 
 	
