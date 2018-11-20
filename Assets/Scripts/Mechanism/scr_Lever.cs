@@ -29,12 +29,10 @@ public class scr_Lever : MonoBehaviour
 
 	void OnTriggerEnter(Collider other)
 	{
-		Debug.Log("Contact");
 
 		if (other.name != "Player")
 			return;
 
-		Debug.Log("Player found");
 
 		if(GetComponent<Renderer>().sharedMaterial == mt_yellow)
 		{

@@ -38,7 +38,7 @@ public class scr_Move : MonoBehaviour
 
 	private void Checkdeath()
 	{
-		if(transform.position.y < -5)
+		if(transform.position.y < -2)
 		{
 			Death();
 		}
