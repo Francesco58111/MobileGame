@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Waypoints : MonoBehaviour {
 
+    [Header("Set Up")]
     public List<Waypoints> wayPoints;
     public float speed = 3f;
     public bool isCircular;
@@ -13,6 +14,7 @@ public class Waypoints : MonoBehaviour {
     // Toujours true au début car l'objet à bouger doit toujours avancer vers le 1er wayPoint
     public bool inReverse = true;
 
+    [Header("Move behaviours")]
     private Waypoints currentWaypoint;
     private int currentIndex = 0;
     private bool isWaiting = false;
@@ -20,8 +22,7 @@ public class Waypoints : MonoBehaviour {
     public float waitSeconds = 0;
     public float speedOut = 0;
 
-    public float rotationSpeed = 5.0f;
-
+    [Header("Limits")]
     public LimitBehaviour leftLimit;
     public LimitBehaviour rightLimit;
     public LimitBehaviour upLimit;

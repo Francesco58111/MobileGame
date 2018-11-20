@@ -27,7 +27,8 @@ public class MobBehaviour : MonoBehaviour
         //Récupère le Nav Mesh Agent du Gameobject
         nav = GetComponent<NavMeshAgent>();
         //Assign la première destination
-        SetNewDestination(waypoints[currentWaypoint % waypoints.Count].transform);
+        if (waypoints.Count != 0)
+            SetNewDestination(waypoints[currentWaypoint % waypoints.Count].transform);
     }
 
 
@@ -42,7 +43,7 @@ public class MobBehaviour : MonoBehaviour
         }
 
         //Lorsque le player n'est plus dans la zone, "il commence à le perdre de vue"
-        if (detection.playerInTrigger == false)
+        if (detection.playerInTrigger == false && waypoints.Count != 0)
             StartCoroutine(WaitingAtWaypoint(5));
 
 

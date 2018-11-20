@@ -9,9 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0b7e162e8636e294aa70c1acbeb59e52, type: 3}
-  m_Name: WallBrush
+  m_Name: TrapBrush
   m_EditorClassIdentifier: 
   m_Prefabs:
-  - {fileID: 1935803532909854, guid: 56f6e4e604b935146afe21d58232a530, type: 2}
+  - {fileID: 1993658270783054, guid: 90f36c734ba6d9e458d6fa523bff2c5e, type: 2}
   m_PerlinScale: 0.5
   m_Z: 0
