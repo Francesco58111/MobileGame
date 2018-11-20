@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a7d64648b55570044a692a5e2972928e
+guid: ad764d1a0b3958f47a4fa5b73599724d
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -9,7 +9,7 @@ ModelImporter:
     2100002: 'Material #14'
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Plane001
+    4300000: floor_01
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -49,7 +49,7 @@ ModelImporter:
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 1
+    generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
