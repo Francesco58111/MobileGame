@@ -11,6 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b7e162e8636e294aa70c1acbeb59e52, type: 3}
   m_Name: LeverBrush
   m_EditorClassIdentifier: 
-  m_Prefabs: []
+  m_Prefabs:
+  - {fileID: 1045852688890374, guid: 87b6049518fb39d49922ab7966a9b5bd, type: 2}
   m_PerlinScale: 0.5
   m_Z: 0

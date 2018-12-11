@@ -15,7 +15,7 @@ public class scr_PressurePlate : MonoBehaviour
 		if (triggered)
 			return;
 
-        if (other.gameObject.tag == "Player")
+        if (other.transform.parent.gameObject.tag == "Player")
         {
             triggered = true;
             GetComponent<Renderer>().sharedMaterial = mt_Red;

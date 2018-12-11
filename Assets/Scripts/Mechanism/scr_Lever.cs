@@ -30,7 +30,7 @@ public class scr_Lever : MonoBehaviour
 	void OnTriggerEnter(Collider other)
 	{
 
-		if (other.name != "Player")
+		if (other.transform.parent.name != "Player")
 			return;
 
 
