@@ -58,6 +58,9 @@ public class Waypoints : MonoBehaviour {
 
         Vector3 currentDirection = this.transform.position - currentWaypoint.transform.position;
 
+        Debug.Log(currentDirection);
+
+
         if (currentDirection.x != 0)
         {
             if (currentDirection.x < 0)
@@ -71,6 +74,11 @@ public class Waypoints : MonoBehaviour {
                 rightLimit.canKill = false;
                 leftLimit.canKill = true;
             }
+        }
+        else
+        {
+            rightLimit.canKill = false;
+            leftLimit.canKill = false;
         }
 
         if (currentDirection.z != 0)
@@ -86,6 +94,11 @@ public class Waypoints : MonoBehaviour {
                 upLimit.canKill = false;
                 bottomLimit.canKill = true;
             }
+        }
+        else
+        {
+            bottomLimit.canKill = false;
+            upLimit.canKill = false;
         }
     }
 
