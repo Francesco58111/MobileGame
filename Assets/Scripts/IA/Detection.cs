@@ -12,13 +12,13 @@ public class Detection : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.transform.parent.gameObject.tag == "Player")
             playerInTrigger = true;
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.transform.parent.gameObject.tag == "Player")
             playerInTrigger = false;
     }
 }

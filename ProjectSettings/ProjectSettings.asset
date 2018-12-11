@@ -8,7 +8,7 @@ PlayerSettings:
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
-  defaultScreenOrientation: 4
+  defaultScreenOrientation: 3
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
@@ -711,9 +711,9 @@ PlayerSettings:
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: 7958189b-c088-4aa5-93fb-f08a7fc063f7
-  projectName: MobileGame
-  organizationId: fn-noel111-gmail-com
+  cloudProjectId: 3228b4e0-3848-4a65-ab66-fbc47178816b
+  projectName: New Unity Project
+  organizationId: unity_uljahfx92ep9-g
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
