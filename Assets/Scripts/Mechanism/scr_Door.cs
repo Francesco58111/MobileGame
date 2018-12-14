@@ -5,13 +5,15 @@ using UnityEngine;
 public class scr_Door : MonoBehaviour
 {
 	public Animator anim;
-    public GameObject fallingGround;
+    public BoxCollider fallingGround;
 	public bool open = false;
 
 	private void Awake()
 	{
 		anim = GetComponentInChildren<Animator>();
- 
+
+        if (fallingGround != null)
+            fallingGround.enabled = false;
 	}
 
     private void Start()
@@ -22,11 +24,6 @@ public class scr_Door : MonoBehaviour
     public void Activate()
 	{
 		open = !open;
-
-        if (fallingGround != null)
-            fallingGround.SetActive(false);
-
-        
         anim.SetBool("Open", open);
 	}
 }

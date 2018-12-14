@@ -7,16 +7,14 @@ public class NavigationBaker : MonoBehaviour
 {
 
 
-    //public NavMeshBuilder[] surfaces;
+    public NavMeshSurface[] surfaces;
 
 
-    void Start()
+    public void BuildNavMesh()
     {
-        /*
         for (int i = 0; i < surfaces.Length; i++)
         {
-            //surfaces[i].
+            surfaces[i].BuildNavMesh();
         }
-        */
     }
 }
