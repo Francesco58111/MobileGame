@@ -17,7 +17,7 @@ public class scr_Move : MonoBehaviour
 	[Range(0,1000)]public float acceleration = 5;
 	public float gravity = 10;
 
-	bool walled = false;
+	public bool walled = false;
 
 
 
@@ -59,6 +59,7 @@ public class scr_Move : MonoBehaviour
 		Debug.DrawRay(transform.position, Vector3.down * 1.15f, Color.red);
 		if(!Physics.Raycast(transform.position, Vector3.down, 1.15f) )
 		{
+
 			rb.AddForce(Vector3.down * gravity);
 		}
 	}
