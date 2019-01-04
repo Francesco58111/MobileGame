@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class scr_Move : MonoBehaviour
 {
@@ -16,6 +17,10 @@ public class scr_Move : MonoBehaviour
 	[Range(0,1000)]public float acceleration = 5;
 	public float gravity = 10;
 
+	public bool walled = false;
+
+
+
 
 	private void Start()
 	{
@@ -24,26 +29,42 @@ public class scr_Move : MonoBehaviour
 	}
 
 	private void Update()
-	{ 	
+	{
 		GetInput();
 		Move();
+		ApplyGravity();
+		Checkdeath();
 	}
 
-
-
-	private void Move()
+	private void Checkdeath()
 	{
-		direction = destination - transform.position;
-		direction = new Vector3(direction.x, 0, direction.z);
-		//transform.LookAt(direction); 
-		//rb.MovePosition(Vector3.Lerp(rb.position, destination, speed * Time.deltaTime));
-		if(rb.velocity.magnitude < maxSpeed && Input.GetMouseButton(0))
+		if(transform.position.y < -2)
 		{
-			rb.AddForce(direction * acceleration);
+			Death();
 		}
 	}
 
-	void GetInput()
+
+	private void ApplyGravity()
+	{
+		//Debug.DrawRay(transform.position, direction.normalized * .85f, Color.green);
+		//if (Physics.Raycast(transform.position, direction.normalized, 0.85f))
+		//{
+		//	walled = true;
+		//	//rb.velocity = new Vector3(0, rb.velocity.y, 0);
+		//}
+		//else
+		//	walled = false;
+
+		Debug.DrawRay(transform.position, Vector3.down * 1.15f, Color.red);
+		if(!Physics.Raycast(transform.position, Vector3.down, 1.15f) )
+		{
+
+			rb.AddForce(Vector3.down * gravity);
+		}
+	}
+
+	private void GetInput()
 	{
 		if (Input.GetMouseButton(0))
 		{
@@ -56,4 +77,33 @@ public class scr_Move : MonoBehaviour
 
 	}
 
+	private void Move()
+	{
+		direction = destination - transform.position;
+		direction = new Vector3(direction.x, 0, direction.z);
+		//transform.LookAt(direction); 
+		//rb.MovePosition(Vector3.Lerp(rb.position, destination, speed * Time.deltaTime));
+		if(rb.velocity.magnitude < maxSpeed && Input.GetMouseButton(0) && !walled)
+		{
+			rb.AddForce(direction * acceleration);
+		}
+		transform.LookAt(new Vector3(destination.x, transform.position.y, destination.z));
+	}
+
+	public void Death()
+	{
+		//stopper la camera
+		//jouer l'anim de mort
+		//afficher la mort (et le score ?)
+		StartCoroutine(Respawn());
+	}
+
+	IEnumerator Respawn()
+	{
+		//écran de chargement
+		yield return new WaitForSeconds(1f);
+		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+	}
+
+	
 }
