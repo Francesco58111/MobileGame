@@ -21,6 +21,10 @@ public class MobBehaviour : MonoBehaviour
     public Transform playerTransform;
     public Detection detection;
 
+    [Header("Récupération de l'animator")]
+    public Animator anim;
+
+
 
     void Start()
     {
@@ -90,9 +94,9 @@ public class MobBehaviour : MonoBehaviour
             collision.gameObject.SetActive(false);
     }
 
+
     public void Falling()
     {
-        nav.height = 0;
-        nav.radius = 0;
+        anim.SetTrigger("Death");
     }
 }
