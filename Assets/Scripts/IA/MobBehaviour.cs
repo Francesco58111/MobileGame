@@ -21,6 +21,10 @@ public class MobBehaviour : MonoBehaviour
     public Transform playerTransform;
     public Detection detection;
 
+    [Header("Récupération de l'animator")]
+    public Animator anim;
+
+
 
     void Start()
     {
@@ -34,6 +38,10 @@ public class MobBehaviour : MonoBehaviour
 
     void Update()
     {
+
+        if (Input.GetKeyDown(KeyCode.Space))
+            Falling();
+
         //Vérifie si le player est dans la zone de détection
         if (detection.playerInTrigger)
         {
@@ -84,5 +92,11 @@ public class MobBehaviour : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
             collision.gameObject.SetActive(false);
+    }
+
+
+    public void Falling()
+    {
+        anim.SetTrigger("Death");
     }
 }

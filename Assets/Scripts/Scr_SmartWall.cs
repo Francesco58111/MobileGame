@@ -12,10 +12,17 @@ public class Scr_SmartWall : MonoBehaviour
     RaycastHit left;
     RaycastHit down;
 
-    public bool upFilled;
-    public bool rightFilled;
-    public bool leftFilled;
-    public bool downFilled;
+	MeshFilter mesh;
+	MeshRenderer meshRenderer;
+
+	public Mesh pillarMesh;
+
+	private int sideFilled = 0;
+
+    [SerializeField] private bool upFilled;
+	[SerializeField] private bool rightFilled;
+	[SerializeField] private bool leftFilled;
+	[SerializeField] private bool downFilled;
 
 #if UNITY_EDITOR
 
@@ -24,28 +31,40 @@ public class Scr_SmartWall : MonoBehaviour
         transform.localScale = Vector3.one;
 
         Physics.Raycast(transform.position + Vector3.up, Vector3.forward, out up, 1);
-        if (up.collider != null)
-            upFilled = true;
-        else
-            upFilled = false;
+		if (up.collider != null)
+		{
+			upFilled = true;
+			sideFilled++;
+		}
+		else
+			upFilled = false;
 
         Physics.Raycast(transform.position + Vector3.up, Vector3.right, out right, 1);
-        if (right.collider != null)
-            rightFilled = true;
-        else
-            rightFilled = false;
+		if (right.collider != null)
+		{
+			rightFilled = true;
+			sideFilled++;
+		}
+		else
+			rightFilled = false;
 
         Physics.Raycast(transform.position + Vector3.up, Vector3.left, out left, 1);
-        if (left.collider != null)
-            leftFilled = true;
-        else
-            leftFilled = false;
+		if (left.collider != null)
+		{
+			leftFilled = true;
+			sideFilled++;
+		}
+		else
+			leftFilled = false;
 
         Physics.Raycast(transform.position + Vector3.up, Vector3.back, out down, 1);
-        if (down.collider != null)
-            downFilled = true;
-        else
-            downFilled = false;
+		if (down.collider != null)
+		{
+			downFilled = true;
+			sideFilled++;
+		}
+		else
+			downFilled = false;
 
 
 
@@ -54,6 +73,11 @@ public class Scr_SmartWall : MonoBehaviour
 
         if (rightFilled && !upFilled && !downFilled || leftFilled && !upFilled && !downFilled)
             transform.rotation = Quaternion.Euler(-90, 0, 0);
+
+		if(sideFilled <= 3)
+		{
+
+		}
     }
 #endif
 }

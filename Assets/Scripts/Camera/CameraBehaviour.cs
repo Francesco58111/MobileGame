@@ -14,7 +14,7 @@ public class CameraBehaviour : MonoBehaviour
 
     private void Awake()
     {
-        cam.gameObject.SetActive(false);
+        //cam.gameObject.SetActive(false);
     }
 
     void Update()
