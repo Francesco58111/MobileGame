@@ -34,6 +34,10 @@ public class MobBehaviour : MonoBehaviour
 
     void Update()
     {
+
+        if (Input.GetKeyDown(KeyCode.Space))
+            Falling();
+
         //Vérifie si le player est dans la zone de détection
         if (detection.playerInTrigger)
         {
@@ -84,5 +88,11 @@ public class MobBehaviour : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
             collision.gameObject.SetActive(false);
+    }
+
+    public void Falling()
+    {
+        nav.height = 0;
+        nav.radius = 0;
     }
 }
