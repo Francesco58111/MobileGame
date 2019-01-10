@@ -8,24 +8,122 @@ ModelImporter:
     100004: GeoSphere011
     100006: Line011
     100008: //RootNode
+    100010: Chapeau009
+    100012: Cylinder008
+    100014: Main005
+    100016: Main006
+    100018: Object007
+    100020: Plane021
+    100022: Chapeau_final
+    100024: Cheveux_final
+    100026: Main_droite_finale
+    100028: Main_gauche_finale
+    100030: Robe_finale
+    100032: Visage_final
+    100034: Chapeau_final003
+    100036: Cheveux_final002
+    100038: Main_droite_finale002
+    100040: Main_gauche_finale002
+    100042: Robe_finale002
+    100044: Visage_final002
+    100046: Plane030
     400000: Chapeau003
     400002: GeoSphere010
     400004: GeoSphere011
     400006: Line011
     400008: //RootNode
+    400010: Chapeau009
+    400012: Cylinder008
+    400014: Main005
+    400016: Main006
+    400018: Object007
+    400020: Plane021
+    400022: Chapeau_final
+    400024: Cheveux_final
+    400026: Main_droite_finale
+    400028: Main_gauche_finale
+    400030: Robe_finale
+    400032: Visage_final
+    400034: Chapeau_final003
+    400036: Cheveux_final002
+    400038: Main_droite_finale002
+    400040: Main_gauche_finale002
+    400042: Robe_finale002
+    400044: Visage_final002
+    400046: Plane030
     2100000: 'Material #3'
+    2100002: 'Material #50'
+    2100004: No Name
+    2100006: 'Material #53'
     2300000: Chapeau003
     2300002: GeoSphere010
     2300004: GeoSphere011
     2300006: Line011
+    2300008: Chapeau009
+    2300010: Cylinder008
+    2300012: Main005
+    2300014: Main006
+    2300016: Object007
+    2300018: Plane021
+    2300020: Chapeau_final
+    2300022: Cheveux_final
+    2300024: Main_droite_finale
+    2300026: Main_gauche_finale
+    2300028: Robe_finale
+    2300030: Visage_final
+    2300032: Chapeau_final003
+    2300034: Cheveux_final002
+    2300036: Main_droite_finale002
+    2300038: Main_gauche_finale002
+    2300040: Robe_finale002
+    2300042: Visage_final002
+    2300044: Plane030
     3300000: Chapeau003
     3300002: GeoSphere010
     3300004: GeoSphere011
     3300006: Line011
+    3300008: Chapeau009
+    3300010: Cylinder008
+    3300012: Main005
+    3300014: Main006
+    3300016: Object007
+    3300018: Plane021
+    3300020: Chapeau_final
+    3300022: Cheveux_final
+    3300024: Main_droite_finale
+    3300026: Main_gauche_finale
+    3300028: Robe_finale
+    3300030: Visage_final
+    3300032: Chapeau_final003
+    3300034: Cheveux_final002
+    3300036: Main_droite_finale002
+    3300038: Main_gauche_finale002
+    3300040: Robe_finale002
+    3300042: Visage_final002
+    3300044: Plane030
     4300000: Chapeau003
     4300002: Line011
     4300004: GeoSphere010
     4300006: GeoSphere011
+    4300008: Plane021
+    4300010: Chapeau009
+    4300012: Cylinder008
+    4300014: Main005
+    4300016: Main006
+    4300018: Object007
+    4300020: Visage_final
+    4300022: Chapeau_final
+    4300024: Robe_finale
+    4300026: Main_droite_finale
+    4300028: Cheveux_final
+    4300030: Main_gauche_finale
+    4300032: Chapeau_final003
+    4300034: Cheveux_final002
+    4300036: Main_droite_finale002
+    4300038: Main_gauche_finale002
+    4300040: Robe_finale002
+    4300042: Visage_final002
+    4300044: Plane030
   externalObjects: {}
   materials:
     importMaterials: 1
