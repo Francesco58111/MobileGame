@@ -11,17 +11,17 @@ public class scr_Lever : MonoBehaviour
 	public Material mt_yellow;
 	public Material mt_Red;
 
+    private bool canActivate = true;
+
 	public UnityEvent activate;
 
 
 
-	// Use this for initialization
 	void Start()
 	{
 		trigger = GetComponent<CapsuleCollider>();
 	}
 
-	// Update is called once per frame
 	void Update()
 	{
 
