@@ -6,12 +6,13 @@ using UnityEngine.Events;
 [RequireComponent( typeof (CapsuleCollider))]
 public class scr_Lever : MonoBehaviour
 {
-
+	private Animator anim;
 	public CapsuleCollider trigger;
 	public Material mt_yellow;
 	public Material mt_Red;
 
 	public UnityEvent activate;
+	public bool isActive = false;
 
 
 
@@ -19,37 +20,26 @@ public class scr_Lever : MonoBehaviour
 	void Start()
 	{
 		trigger = GetComponent<CapsuleCollider>();
+		anim = GetComponent<Animator>();
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
-
+		anim.SetBool("active", isActive);
 	}
 
 	void OnTriggerEnter(Collider other)
-	{
-
+	{ 
 		if (other.transform.parent.name != "Player")
 			return;
 
-
-		if(GetComponent<Renderer>().sharedMaterial == mt_yellow)
-		{
-			GetComponent<Renderer>().sharedMaterial = mt_Red;
-			Foo();
-			return;
-		}
-		if (GetComponent<Renderer>().sharedMaterial == mt_Red)
-		{
-			gameObject.GetComponent<Renderer>().sharedMaterial = mt_yellow;
-			Foo();
-			return;
-		}
+		Foo();
 	}
 
 	void Foo()
 	{
 		activate.Invoke();
+		isActive = !isActive;
 	}
 }
