@@ -97,6 +97,7 @@ public class MobBehaviour : MonoBehaviour
     public void Falling()
     {
         anim.SetTrigger("Death");
-        nav.SetDestination(transform.position);
+        Debug.Log("Fall");
+        nav.SetDestination(this.transform.position);
     }
 }
