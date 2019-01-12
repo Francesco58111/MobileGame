@@ -23,7 +23,6 @@ namespace UnityEditor
 			if (brushTarget.layer == 31)
 				return;
 
-			int index = Mathf.Clamp(Mathf.FloorToInt(GetPerlinValue(position, m_PerlinScale, k_PerlinOffset)*m_Prefabs.Length), 0, m_Prefabs.Length - 1);
 			GameObject prefab = m_Prefabs[m_selectedPrefab];
 			GameObject instance = (GameObject) PrefabUtility.InstantiatePrefab(prefab);
 			Undo.RegisterCreatedObjectUndo((Object)instance, "Paint Prefabs");

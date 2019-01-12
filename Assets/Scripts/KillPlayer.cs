@@ -11,5 +11,10 @@ public class KillPlayer : MonoBehaviour
 		{
 			collision.gameObject.GetComponent<scr_Move>().Death();
 		}
+
+		if (collision.gameObject.tag == "MobFollow")
+		{
+			collision.gameObject.SetActive(false);
+		}
 	}
 }
