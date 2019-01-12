@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f3e241c3a702a2149848f5fd0dbb7664
+guid: a92136572f622b347b32db043d9bdf6c
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -10,8 +10,7 @@ ModelImporter:
     2100004: 'Material #15'
     2300000: //RootNode
     3300000: //RootNode
-    4300000: pendule
-    4300002: "\xE9tag\xE8re_simple"
+    4300000: "\xE9tag\xE8re_triple"
   externalObjects: {}
   materials:
     importMaterials: 1
