@@ -11,8 +11,6 @@ public class scr_Lever : MonoBehaviour
 	public Material mt_yellow;
 	public Material mt_Red;
 
-    private bool canActivate = true;
-
 	public UnityEvent activate;
 	public bool isActive = false;
 
