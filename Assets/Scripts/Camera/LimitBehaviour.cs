@@ -15,7 +15,7 @@ public class LimitBehaviour : MonoBehaviour
     {
         if (canKill == true && collision.gameObject.tag == "Player")
         {
-            collision.gameObject.SetActive(false);
+			collision.gameObject.GetComponent<scr_Move>().Death();
         }
             
     }
