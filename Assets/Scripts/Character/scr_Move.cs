@@ -33,16 +33,9 @@ public class scr_Move : MonoBehaviour
 		GetInput();
 		Move();
 		ApplyGravity();
-		Checkdeath();
 	}
 
-	private void Checkdeath()
-	{
-		if(transform.position.y < -2)
-		{
-			Death();
-		}
-	}
+
 
 
 	private void ApplyGravity()
