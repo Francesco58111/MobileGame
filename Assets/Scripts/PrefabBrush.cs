@@ -13,6 +13,7 @@ namespace UnityEditor
 	{
 		private const float k_PerlinOffset = 100000f;
 		public GameObject[] m_Prefabs;
+		public int m_selectedPrefab;
 		public float m_PerlinScale = 0.5f;
 		public int m_Z;
 
@@ -23,7 +24,7 @@ namespace UnityEditor
 				return;
 
 			int index = Mathf.Clamp(Mathf.FloorToInt(GetPerlinValue(position, m_PerlinScale, k_PerlinOffset)*m_Prefabs.Length), 0, m_Prefabs.Length - 1);
-			GameObject prefab = m_Prefabs[index];
+			GameObject prefab = m_Prefabs[m_selectedPrefab];
 			GameObject instance = (GameObject) PrefabUtility.InstantiatePrefab(prefab);
 			Undo.RegisterCreatedObjectUndo((Object)instance, "Paint Prefabs");
 			if (instance != null)
@@ -85,6 +86,7 @@ namespace UnityEditor
 			m_SerializedObject.UpdateIfRequiredOrScript();
 			prefabBrush.m_PerlinScale = EditorGUILayout.Slider("Perlin Scale", prefabBrush.m_PerlinScale, 0.001f, 0.999f);
 			prefabBrush.m_Z = EditorGUILayout.IntField("Position Z", prefabBrush.m_Z);
+			prefabBrush.m_selectedPrefab = EditorGUILayout.IntField("SelectedPrefab", prefabBrush.m_selectedPrefab);
 				
 			EditorGUILayout.PropertyField(m_Prefabs, true);
 			m_SerializedObject.ApplyModifiedPropertiesWithoutUndo();
