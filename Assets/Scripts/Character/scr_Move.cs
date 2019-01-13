@@ -33,28 +33,14 @@ public class scr_Move : MonoBehaviour
 		GetInput();
 		Move();
 		ApplyGravity();
-		Checkdeath();
 	}
 
-	private void Checkdeath()
-	{
-		if(transform.position.y < -2)
-		{
-			Death();
-		}
-	}
+
 
 
 	private void ApplyGravity()
 	{
-		//Debug.DrawRay(transform.position, direction.normalized * .85f, Color.green);
-		//if (Physics.Raycast(transform.position, direction.normalized, 0.85f))
-		//{
-		//	walled = true;
-		//	//rb.velocity = new Vector3(0, rb.velocity.y, 0);
-		//}
-		//else
-		//	walled = false;
+
 
 		Debug.DrawRay(transform.position, Vector3.down * 1.15f, Color.red);
 		if(!Physics.Raycast(transform.position, Vector3.down, 1.15f) )
@@ -81,8 +67,7 @@ public class scr_Move : MonoBehaviour
 	{
 		direction = destination - transform.position;
 		direction = new Vector3(direction.x, 0, direction.z);
-		//transform.LookAt(direction); 
-		//rb.MovePosition(Vector3.Lerp(rb.position, destination, speed * Time.deltaTime));
+
 		if(rb.velocity.magnitude < maxSpeed && Input.GetMouseButton(0) && !walled)
 		{
 			rb.AddForce(direction * acceleration);

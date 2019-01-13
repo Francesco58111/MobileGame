@@ -33,14 +33,13 @@ public class MobBehaviour : MonoBehaviour
         //Assign la première destination
         if (waypoints.Count != 0)
             SetNewDestination(waypoints[currentWaypoint % waypoints.Count].transform);
+        else
+            nav.SetDestination(transform.position);
     }
 
 
     void Update()
     {
-
-        if (Input.GetKeyDown(KeyCode.Space))
-            Falling();
 
         //Vérifie si le player est dans la zone de détection
         if (detection.playerInTrigger)
@@ -98,5 +97,7 @@ public class MobBehaviour : MonoBehaviour
     public void Falling()
     {
         anim.SetTrigger("Death");
+        Debug.Log("Fall");
+        nav.SetDestination(this.transform.position);
     }
 }

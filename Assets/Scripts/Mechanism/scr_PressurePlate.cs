@@ -7,10 +7,17 @@ public class scr_PressurePlate : MonoBehaviour
 {
 	[SerializeField] private bool triggered = false;
 	public UnityEvent activate;
-	public Material mt_Red;
+    public Animator anim;
 
 
-	void OnTriggerEnter(Collider other)
+    private void Awake()
+    {
+        if (anim == null)
+            anim = GetComponentInParent<Animator>();
+    }
+
+
+    void OnTriggerEnter(Collider other)
 	{
 		if (triggered)
 			return;
@@ -18,7 +25,7 @@ public class scr_PressurePlate : MonoBehaviour
         if (other.transform.parent.gameObject.tag == "Player")
         {
             triggered = true;
-            GetComponent<Renderer>().sharedMaterial = mt_Red;
+            anim.SetTrigger("Activate");
             Foo();
         }
 		
