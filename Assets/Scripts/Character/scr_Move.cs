@@ -10,11 +10,16 @@ public class scr_Move : MonoBehaviour
 	Ray ray;
 	RaycastHit hit;
 	Rigidbody rb;
-	public float speed = 5;
+	Animator playerAnim;
+	public GameObject panicFXObject;
+	public GameObject exclamationMark;
+	public GameObject clicFX;
+
 	Vector3 destination;
 	Vector3 direction;
 	[Range(0,1000)]public float maxSpeed = 5;
 	[Range(0,1000)]public float acceleration = 5;
+	public float speed = 5;
 	public float gravity = 10;
 
 	public bool walled = false;
@@ -26,6 +31,7 @@ public class scr_Move : MonoBehaviour
 	{
 		rb = GetComponentInChildren<Rigidbody>();
 		destination = new Vector3(0, transform.position.y, 0);
+		playerAnim = GetComponent<Animator>();
 	}
 
 	private void Update()
@@ -33,10 +39,17 @@ public class scr_Move : MonoBehaviour
 		GetInput();
 		Move();
 		ApplyGravity();
+		HandleAnimations();
 	}
 
+	private void HandleAnimations()
+	{
+		if (rb.velocity.magnitude > 0.1f)
+			playerAnim.SetBool("Walking", true);
 
-
+		else
+			playerAnim.SetBool("Walking", false);
+	}
 
 	private void ApplyGravity()
 	{
@@ -90,5 +103,20 @@ public class scr_Move : MonoBehaviour
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 
-	
+	public void LaunchClicAnim()
+	{
+		clicFX.SetActive(true);
+		clicFX.GetComponent<Animator>().Play("Clic");
+	}
+
+	public void LaunchExclamationMarkAnim()
+	{
+		exclamationMark.SetActive(true);
+		exclamationMark.GetComponent<Animator>().Play("Point_d_exclamation");
+	}
+
+	public void CryAnim(bool active)
+	{
+		panicFXObject.GetComponent<Animator>().SetBool("Cry", active);
+	}
 }

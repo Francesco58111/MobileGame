@@ -11,7 +11,8 @@ public class LimitBehaviour : MonoBehaviour
 
 
 
-    private void OnCollisionEnter(Collision collision)
+
+	private void OnCollisionEnter(Collision collision)
     {
         if (canKill == true && collision.gameObject.tag == "Player")
         {
@@ -20,4 +21,7 @@ public class LimitBehaviour : MonoBehaviour
             
     }
 
+
+
 }
+	
