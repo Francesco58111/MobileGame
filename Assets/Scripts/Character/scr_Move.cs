@@ -27,12 +27,14 @@ public class scr_Move : MonoBehaviour
 
 
 
+
 	private void Start()
 	{
 		rb = GetComponentInChildren<Rigidbody>();
 		destination = new Vector3(0, transform.position.y, 0);
 		playerAnim = GetComponent<Animator>();
 	}
+
 
 	private void Update()
 	{
@@ -42,6 +44,7 @@ public class scr_Move : MonoBehaviour
 		HandleAnimations();
 	}
 
+
 	private void HandleAnimations()
 	{
 		if (rb.velocity.magnitude > 0.1f)
@@ -50,6 +53,7 @@ public class scr_Move : MonoBehaviour
 		else
 			playerAnim.SetBool("Walking", false);
 	}
+
 
 	private void ApplyGravity()
 	{
@@ -62,6 +66,7 @@ public class scr_Move : MonoBehaviour
 			rb.AddForce(Vector3.down * gravity);
 		}
 	}
+
 
 	private void GetInput()
 	{
@@ -76,6 +81,7 @@ public class scr_Move : MonoBehaviour
 
 	}
 
+
 	private void Move()
 	{
 		direction = destination - transform.position;
@@ -88,6 +94,7 @@ public class scr_Move : MonoBehaviour
 		transform.LookAt(new Vector3(destination.x, transform.position.y, destination.z));
 	}
 
+
 	public void Death()
 	{
 		//stopper la camera
@@ -96,6 +103,7 @@ public class scr_Move : MonoBehaviour
 		StartCoroutine(Respawn());
 	}
 
+
 	IEnumerator Respawn()
 	{
 		//écran de chargement
@@ -103,11 +111,13 @@ public class scr_Move : MonoBehaviour
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 
+
 	public void LaunchClicAnim()
 	{
 		clicFX.SetActive(true);
 		clicFX.GetComponent<Animator>().Play("Clic");
 	}
+
 
 	public void LaunchExclamationMarkAnim()
 	{
@@ -115,8 +125,19 @@ public class scr_Move : MonoBehaviour
 		exclamationMark.GetComponent<Animator>().Play("Point_d_exclamation");
 	}
 
+
 	public void CryAnim(bool active)
 	{
 		panicFXObject.GetComponent<Animator>().SetBool("Cry", active);
 	}
+
+    private void SpriteRotationUpdate()
+    {
+        Quaternion playerRotation = this.transform.rotation;
+        Quaternion panicRotation = panicFXObject.transform.rotation;
+        Quaternion clickRotation = clicFX.transform.rotation;
+
+        //panicRotation = panicRotation - playerRotation;
+        
+    }
 }
