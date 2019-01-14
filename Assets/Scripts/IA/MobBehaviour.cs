@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -24,10 +25,12 @@ public class MobBehaviour : MonoBehaviour
     [Header("Récupération de l'animator")]
     public Animator anim;
 
+	Rigidbody rb;
 
 
     void Start()
     {
+		rb = GetComponent<Rigidbody>();
         //Récupère le Nav Mesh Agent du Gameobject
         nav = GetComponent<NavMeshAgent>();
         //Assign la première destination
@@ -59,14 +62,26 @@ public class MobBehaviour : MonoBehaviour
             currentWaypoint++;
             StartCoroutine(WaitingAtWaypoint(2));
         }
+
+		HandleAnimations();
     }
 
-    /// <summary>
-    /// Temps avant de se rediriger vers un waypoint
-    /// </summary>
-    /// <param name="attente"></param>
-    /// <returns></returns>
-    private IEnumerator WaitingAtWaypoint(float attente)
+	private void HandleAnimations()
+	{
+		if (rb.velocity.magnitude > 0.01f)
+		{
+			anim.SetBool("Walk", true);
+		}
+		else
+			anim.SetBool("Walk", false);
+	}
+
+	/// <summary>
+	/// Temps avant de se rediriger vers un waypoint
+	/// </summary>
+	/// <param name="attente"></param>
+	/// <returns></returns>
+	private IEnumerator WaitingAtWaypoint(float attente)
     {
         yield return new WaitForSeconds(attente);
         SetNewDestination(waypoints[currentWaypoint % waypoints.Count].transform);
@@ -89,8 +104,8 @@ public class MobBehaviour : MonoBehaviour
     /// <param name="collision"></param>
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Player")
-            collision.gameObject.SetActive(false);
+		if (collision.gameObject.tag == "Player")
+			GameObject.FindObjectOfType<scr_Move>().Death();
     }
 
 
