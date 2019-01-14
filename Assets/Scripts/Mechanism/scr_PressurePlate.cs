@@ -27,7 +27,8 @@ public class scr_PressurePlate : MonoBehaviour
             triggered = true;
             anim.SetTrigger("Activate");
             Foo();
-        }
+			other.transform.parent.GetComponent<scr_Move>().LaunchClicAnim();
+		}
 		
 	}
 

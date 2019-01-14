@@ -33,6 +33,7 @@ public class scr_Lever : MonoBehaviour
 			return;
 
 		Foo();
+		other.transform.parent.GetComponent<scr_Move>().LaunchClicAnim();
 	}
 
 	void Foo()
