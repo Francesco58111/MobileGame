@@ -7,7 +7,9 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class Scr_SmartWall : MonoBehaviour
 {
-    RaycastHit up;
+	#region variables
+
+	RaycastHit up;
     RaycastHit right;
     RaycastHit left;
     RaycastHit down;
@@ -23,10 +25,11 @@ public class Scr_SmartWall : MonoBehaviour
 	[SerializeField] private bool rightFilled;
 	[SerializeField] private bool leftFilled;
 	[SerializeField] private bool downFilled;
+	#endregion
 
 #if UNITY_EDITOR
 
-    private void Update()
+	private void Update()
     {
         transform.localScale = Vector3.one;
 
