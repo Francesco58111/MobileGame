@@ -18,6 +18,8 @@ public class scr_Move : MonoBehaviour
     public GameObject FX;
 	public GameObject pauseMenu;
 
+    public PlayableDirector playable;
+
 	Vector3 destination;
 	Vector3 direction;
 	[Range(0,1000)]public float maxSpeed = 5;
@@ -105,7 +107,8 @@ public class scr_Move : MonoBehaviour
 
 	public void Death()
 	{
-		//stopper la camera
+        //stopper la camera
+        playable.playableGraph.GetRootPlayable(0).SetSpeed(0);
 		//jouer l'anim de mort
 		//afficher la mort (et le score ?)
 		pauseTimeline.Invoke();
