@@ -14,6 +14,7 @@ public class scr_Move : MonoBehaviour
 	public GameObject panicFXObject;
 	public GameObject exclamationMark;
 	public GameObject clicFX;
+    public GameObject FX;
 
 	Vector3 destination;
 	Vector3 direction;
@@ -42,7 +43,9 @@ public class scr_Move : MonoBehaviour
 		Move();
 		ApplyGravity();
 		HandleAnimations();
-	}
+        SpriteRotationUpdate();
+
+    }
 
 
 	private void HandleAnimations()
@@ -133,11 +136,9 @@ public class scr_Move : MonoBehaviour
 
     private void SpriteRotationUpdate()
     {
-        Quaternion playerRotation = this.transform.rotation;
-        Quaternion panicRotation = panicFXObject.transform.rotation;
-        Quaternion clickRotation = clicFX.transform.rotation;
+        Transform playerRotation = this.transform;
+        Transform fxRotation = FX.transform;
 
-        //panicRotation = panicRotation - playerRotation;
-        
+        fxRotation.localEulerAngles = new Vector3 (0,-playerRotation.eulerAngles.y,0);
     }
 }
