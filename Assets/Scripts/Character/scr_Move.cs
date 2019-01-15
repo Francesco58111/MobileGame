@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Events;
 using UnityEngine.Playables;
 
 public class scr_Move : MonoBehaviour
@@ -17,8 +16,8 @@ public class scr_Move : MonoBehaviour
 	public GameObject exclamationMark;
 	public GameObject clicFX;
     public GameObject FX;
-	public GameObject pauseMenu;
 
+    public PlayableDirector playable;
 
 	Vector3 destination;
 	Vector3 direction;
@@ -28,10 +27,6 @@ public class scr_Move : MonoBehaviour
 	public float gravity = 10;
 
 	public bool walled = false;
-
-
-	public UnityEvent pauseTimeline;
-	public Playable playable;
 
 
 
@@ -52,7 +47,7 @@ public class scr_Move : MonoBehaviour
 		ApplyGravity();
 		HandleAnimations();
         SpriteRotationUpdate();
-
+        
     }
 
 
@@ -108,16 +103,20 @@ public class scr_Move : MonoBehaviour
 
 	public void Death()
 	{
-		//stopper la camera
-		//playable.playableGraph.GetRootPlayable(0).SetSpeed(0);
+        //stopper la camera
+        playable.playableGraph.GetRootPlayable(0).SetSpeed(0);
 		//jouer l'anim de mort
 		//afficher la mort (et le score ?)
-		pauseTimeline.Invoke();
-		pauseMenu.SetActive(true);
-		Destroy(gameObject);
+		StartCoroutine(Respawn());
 	}
 
 
+	IEnumerator Respawn()
+	{
+		//écran de chargement
+		yield return new WaitForSeconds(1f);
+		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+	}
 
 
 	public void LaunchClicAnim()
