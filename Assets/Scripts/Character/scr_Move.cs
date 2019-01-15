@@ -18,6 +18,8 @@ public class scr_Move : MonoBehaviour
     public GameObject FX;
     public GameObject pauseMenu;
 
+    public bool canMove = true;
+
     public PlayableDirector playable;
 
 	Vector3 destination;
@@ -44,7 +46,10 @@ public class scr_Move : MonoBehaviour
 	private void Update()
 	{
 		GetInput();
-		Move();
+
+        if(canMove)
+            Move();
+
 		ApplyGravity();
 		HandleAnimations();
         SpriteRotationUpdate();

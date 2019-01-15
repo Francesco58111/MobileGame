@@ -5,17 +5,31 @@ using UnityEngine.SceneManagement;
 
 public class Scr_PauseMenu : MonoBehaviour
 {
+    public Animator fadeAnim;
+
 
 
     public void Retry()
 	{
-        Debug.Log("clicl clack");
-		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        StartCoroutine(RetryDelay());
 	}
+
+    IEnumerator RetryDelay()
+    {
+        fadeAnim.Play("FadeOut");
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 
 	public void ExitToMainMenu()
 	{
-		SceneManager.LoadScene(0);
-	}
+        StartCoroutine(ExitDelay());
+    }
 
+    IEnumerator ExitDelay()
+    {
+        fadeAnim.Play("FadeOut");
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(0);
+    }
 }
