@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Playables;
 
 public class scr_Move : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class scr_Move : MonoBehaviour
 	public GameObject exclamationMark;
 	public GameObject clicFX;
     public GameObject FX;
+
+    public PlayableDirector playable;
 
 	Vector3 destination;
 	Vector3 direction;
@@ -100,7 +103,8 @@ public class scr_Move : MonoBehaviour
 
 	public void Death()
 	{
-		//stopper la camera
+        //stopper la camera
+        playable.playableGraph.GetRootPlayable(0).SetSpeed(0);
 		//jouer l'anim de mort
 		//afficher la mort (et le score ?)
 		StartCoroutine(Respawn());
