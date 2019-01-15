@@ -16,6 +16,7 @@ public class scr_Move : MonoBehaviour
 	public GameObject exclamationMark;
 	public GameObject clicFX;
     public GameObject FX;
+    public GameObject pauseMenu;
 
     public PlayableDirector playable;
 
@@ -105,17 +106,10 @@ public class scr_Move : MonoBehaviour
 	{
         //stopper la camera
         playable.playableGraph.GetRootPlayable(0).SetSpeed(0);
-		//jouer l'anim de mort
-		//afficher la mort (et le score ?)
-		StartCoroutine(Respawn());
-	}
-
-
-	IEnumerator Respawn()
-	{
-		//écran de chargement
-		yield return new WaitForSeconds(1f);
-		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //jouer l'anim de mort
+        //afficher la mort (et le score ?)
+        pauseMenu.SetActive(true);
+        this.enabled = false;
 	}
 
 

@@ -5,8 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class Scr_PauseMenu : MonoBehaviour
 {
-	public void Retry()
+
+
+    public void Retry()
 	{
+        Debug.Log("clicl clack");
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 
