@@ -18,7 +18,6 @@ public class scr_Move : MonoBehaviour
     public GameObject FX;
 	public GameObject pauseMenu;
 
-    public PlayableDirector playable;
 
 	Vector3 destination;
 	Vector3 direction;
