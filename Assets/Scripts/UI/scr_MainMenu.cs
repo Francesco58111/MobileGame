@@ -17,6 +17,9 @@ public class scr_MainMenu : MonoBehaviour
 	Vector3 destination;
 	Vector3 mainCanvasDestination;
 
+
+
+
 	private void Start()
 	{
 		destination = optionMenuTransform.anchoredPosition3D;
@@ -54,7 +57,7 @@ public class scr_MainMenu : MonoBehaviour
 
 	public void DisplayLevelselection()
 	{
-		mainCanvasDestination = new Vector3(-45, 0,100);
+		mainCanvasDestination = new Vector3(-46, 0,100);
 		mainDelay = 0;
 	}
 
