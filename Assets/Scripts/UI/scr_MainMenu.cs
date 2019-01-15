@@ -17,6 +17,7 @@ public class scr_MainMenu : MonoBehaviour
 	Vector3 destination;
 	Vector3 mainCanvasDestination;
 
+    public Animator fadeAnim;
 
 
 
@@ -46,8 +47,20 @@ public class scr_MainMenu : MonoBehaviour
 
 	public void LaunchGame(int i)
 	{
+        StartCoroutine(LaunchingDelay(i));
+
+        /*
+        fadeAnim.Play("FadeOut");
 		SceneManager.LoadScene(i);
+        */
 	}
+
+    IEnumerator LaunchingDelay(int i)
+    {
+        fadeAnim.Play("FadeOut");
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(i);
+    }
 
 	public void DisplayMainMenu()
 	{
