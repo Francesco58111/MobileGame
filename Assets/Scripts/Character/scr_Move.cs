@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
+using UnityEngine.Playables;
 
 public class scr_Move : MonoBehaviour
 {
@@ -30,6 +31,7 @@ public class scr_Move : MonoBehaviour
 
 
 	public UnityEvent pauseTimeline;
+	public Playable playable;
 
 
 
@@ -106,8 +108,8 @@ public class scr_Move : MonoBehaviour
 
 	public void Death()
 	{
-        //stopper la camera
-        playable.playableGraph.GetRootPlayable(0).SetSpeed(0);
+		//stopper la camera
+		//playable.playableGraph.GetRootPlayable(0).SetSpeed(0);
 		//jouer l'anim de mort
 		//afficher la mort (et le score ?)
 		pauseTimeline.Invoke();
