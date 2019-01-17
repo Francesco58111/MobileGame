@@ -70,7 +70,7 @@ public class scr_MainMenu : MonoBehaviour
 
 	public void DisplayLevelselection()
 	{
-		mainCanvasDestination = new Vector3(-46, 0,100);
+		mainCanvasDestination = new Vector3(-26.5f, 0,100);
 		mainDelay = 0;
 	}
 
