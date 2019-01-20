@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class scr_MainMenu : MonoBehaviour
 {
@@ -18,6 +20,8 @@ public class scr_MainMenu : MonoBehaviour
 	Vector3 mainCanvasDestination;
 
     public Animator fadeAnim;
+
+    public AudioMixer mixer;
 
 
 
@@ -48,13 +52,32 @@ public class scr_MainMenu : MonoBehaviour
 	public void LaunchGame(int i)
 	{
         StartCoroutine(LaunchingDelay(i));
-
-        /*
-        fadeAnim.Play("FadeOut");
-		SceneManager.LoadScene(i);
-        */
 	}
 
+
+    /// <summary>
+    /// Modifie le Volume de la Music
+    /// </summary>
+    /// <param name="volume"></param>
+    public void SetMusicVolume(float volume)
+    {
+        mixer.SetFloat("MusicVolume", volume);
+    }
+
+    /// <summary>
+    /// Modifie le Volume des SFX
+    /// </summary>
+    /// <param name="volume"></param>
+    public void SetSfxVolume(float volume)
+    {
+        mixer.SetFloat("SfxVolume", volume);
+    }
+
+    /// <summary>
+    /// Charge la scene suivante en lancant un fade
+    /// </summary>
+    /// <param name="i"></param>
+    /// <returns></returns>
     IEnumerator LaunchingDelay(int i)
     {
         fadeAnim.Play("FadeOut");
@@ -88,9 +111,7 @@ public class scr_MainMenu : MonoBehaviour
 		{
 			destination = new Vector3(optionMenuTransform.anchoredPosition3D.x, optionMenuHidedHeight, optionMenuTransform.anchoredPosition3D.z);
 			delay = 0;
-		}
-
-			
+		}	
 	}
 
 	public void ExitGame()
